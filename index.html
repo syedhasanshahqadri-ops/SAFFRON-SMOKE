@@ -3,117 +3,202 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Saffron & Smoke | Fine Dining, Delivery & QR Menu</title>
-<meta name="description" content="Saffron & Smoke restaurant: 50-dish menu, QR table ordering, home delivery and online orders.">
+<title>Saffron &amp; Smoke | Fine Dining, Delivery &amp; QR Menu</title>
+<meta name="description" content="Saffron &amp; Smoke restaurant: 50-dish menu, QR table ordering, home delivery and online orders.">
+<meta name="theme-color" content="#1A120E">
+<script>
+/* set theme before first paint (no flash) */
+try{var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t}catch(e){}
+document.documentElement.classList.add("js");
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="progress" id="bar"></div>
+
 <div class="topbar"><div class="wrap">
-<span class="hide"><i data-i="clock"></i>Open daily 12:00 pm – 12:00 am</span>
-<div class="r"><span><i data-i="phone"></i><span id="tp"></span></span><span class="hide"><i data-i="mail"></i><span id="tm"></span></span></div>
+  <span class="hide"><i data-i="clock"></i>Open daily 12:00 pm – 12:00 am</span>
+  <div class="r"><span><i data-i="phone"></i><span id="tp"></span></span><span class="hide"><i data-i="mail"></i><span id="tm"></span></span></div>
 </div></div>
+
 <header><div class="wrap nav">
-<a class="logo" href="#home">Saffron <b>&amp;</b> Smoke</a>
-<nav id="nav"><ul>
-<li><a href="#home" class="active">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#menu">Menu</a></li><li><a href="#qr">QR Menu</a></li><li><a href="#contact">Contact</a></li>
-</ul></nav>
-<div class="tools">
-<button class="ib" id="theme" aria-label="Toggle dark and light mode"></button>
-<button class="ib" id="open" aria-label="Open cart"><i data-i="cart"></i><span class="badge" id="cnt">0</span></button>
-<button class="ib" id="burger" aria-label="Menu"><i data-i="menu"></i></button>
-</div>
+  <a class="logo" href="#home"><span class="mark"></span>Saffron <b>&amp;</b> Smoke</a>
+  <nav id="nav"><ul>
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#qr">QR Menu</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul></nav>
+  <div class="tools">
+    <button class="ib" id="theme" aria-label="Toggle dark and light mode"></button>
+    <button class="ib" id="open" aria-label="Open cart"><i data-i="cart"></i><span class="badge" id="cnt">0</span></button>
+    <button class="ib" id="burger" aria-label="Menu"><i data-i="menu"></i></button>
+  </div>
 </div></header>
+
 <main>
-<section class="hero" id="home"><div class="wrap">
-<p class="eyebrow">Fine food · Fair prices</p>
-<h1>Crafted flavours, served with care.</h1>
-<p>Fresh ingredients, charcoal-grilled favourites and a menu of 50 dishes. Dine with us, order from your table by QR code, or enjoy fast home delivery.</p>
-<div class="cta"><a class="btn" href="#menu">View Menu</a><a class="btn ghost" href="#contact">Contact Us</a></div>
-<div class="stats"><div><b>50+</b><span>Dishes on the menu</span></div><div><b>30 min</b><span>Average delivery</span></div><div><b>4.8</b><span>Customer rating</span></div></div>
-</div></section>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="smoke" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="dot"></span>Fine food · Fair prices</p>
+      <h1>Where <em>saffron</em> meets <em>smoke.</em></h1>
+      <p class="lead">Fresh ingredients, charcoal-grilled favourites and a menu of 50 dishes. Dine with us, order from your table by QR code, or enjoy fast home delivery.</p>
+      <div class="cta">
+        <a class="btn" href="#menu">View Menu <i data-i="arrow"></i></a>
+        <a class="btn ghost" href="#contact">Contact Us</a>
+      </div>
+      <div class="stats">
+        <div><b>50+</b><span>Dishes on the menu</span></div>
+        <div><b>6</b><span>Food categories</span></div>
+        <div><b>12–12</b><span>Open every day</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="pill p1"></div>
+      <div class="pill p2"></div>
+      <div class="pill photo"></div>
+      <div class="float f1"><span class="fi"><i data-i="truck"></i></span><div><b>Home delivery</b><span>30–45 minutes</span></div></div>
+      <div class="float f2"><span class="fi"><i data-i="star"></i></span><div><b>4.8</b><span>Customer rating</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span>Charcoal grilled</span><span>Fresh every day</span><span>QR table ordering</span><span>Home delivery</span><span>50 signature dishes</span><span>Fair prices</span>
+</div></div>
+
+<!-- ABOUT -->
 <section id="about"><div class="wrap about">
-<img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=70" alt="Restaurant dining room" loading="lazy">
-<div><p class="eyebrow" style="color:var(--accent)">Our Story</p>
-<h2>A table for every occasion</h2>
-<p>Saffron &amp; Smoke brings together the warmth of traditional cooking and the convenience of modern ordering. Every dish is prepared fresh in our kitchen using quality ingredients and honest portions.</p>
-<p>From quick lunches to family dinners, we keep our prices reasonable so great food stays accessible to everyone.</p>
-<a class="btn" href="#menu" style="margin-top:10px">Explore the Menu</a></div>
+  <div class="arch">
+    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=70" alt="Restaurant dining room" loading="lazy">
+    <span class="stamp">Made fresh daily</span>
+  </div>
+  <div class="txt">
+    <p class="eyebrow">Our Story</p>
+    <h2>A table for every occasion</h2>
+    <p>Saffron &amp; Smoke brings together the warmth of traditional cooking and the convenience of modern ordering. Every dish is prepared fresh in our kitchen using quality ingredients and honest portions.</p>
+    <p>From quick lunches to family dinners, we keep our prices reasonable so great food stays accessible to everyone.</p>
+    <ul class="ticks">
+      <li>Fresh ingredients, every day</li>
+      <li>Charcoal-grilled favourites</li>
+      <li>Honest prices, no hidden charges</li>
+    </ul>
+    <a class="btn" href="#menu">Explore the Menu <i data-i="arrow"></i></a>
+  </div>
 </div></section>
+
+<!-- SERVICES -->
 <section class="alt" id="services"><div class="wrap">
-<div class="head"><p class="eyebrow">What We Offer</p><h2>Our Services</h2><p>Everything you need for a smooth, enjoyable meal.</p></div>
-<div class="grid svc">
-<div class="box"><div class="ico"><i data-i="truck"></i></div><h3>Home Delivery</h3><p>Hot, fresh meals delivered to your door in 30 to 45 minutes.</p></div>
-<div class="box"><div class="ico"><i data-i="tag"></i></div><h3>Reasonable Prices</h3><p>Quality food at fair prices, with no hidden charges.</p></div>
-<div class="box"><div class="ico"><i data-i="qr"></i></div><h3>QR Table Ordering</h3><p>Scan, order and pay at your convenience without waiting.</p></div>
-<div class="box"><div class="ico"><i data-i="users"></i></div><h3>Events &amp; Catering</h3><p>Birthdays, office lunches and family gatherings, made easy.</p></div>
-</div></div></section>
+  <div class="head"><p class="eyebrow">What We Offer</p><h2>Our Services</h2><p>Everything you need for a smooth, enjoyable meal.</p></div>
+  <div class="grid svc">
+    <div class="box"><div class="ico"><i data-i="truck"></i></div><h3>Home Delivery</h3><p>Hot, fresh meals delivered to your door in 30 to 45 minutes.</p></div>
+    <div class="box"><div class="ico"><i data-i="tag"></i></div><h3>Reasonable Prices</h3><p>Quality food at fair prices, with no hidden charges.</p></div>
+    <div class="box"><div class="ico"><i data-i="qr"></i></div><h3>QR Table Ordering</h3><p>Scan, order and pay at your convenience without waiting.</p></div>
+    <div class="box"><div class="ico"><i data-i="users"></i></div><h3>Events &amp; Catering</h3><p>Birthdays, office lunches and family gatherings, made easy.</p></div>
+  </div>
+</div></section>
+
+<!-- MENU -->
 <section id="menu"><div class="wrap">
-<div class="head"><p class="eyebrow">Digital Menu</p><h2>Our Menu</h2><p>Fifty dishes across six categories. Add your favourites and order online or send the order on WhatsApp.</p></div>
-<div class="search"><input id="q" type="search" placeholder="Search dishes"></div>
-<div class="chips" id="chips"></div>
-<div class="grid menu" id="list"></div>
+  <div class="head"><p class="eyebrow">Digital Menu</p><h2>Our Menu</h2><p>Fifty dishes across six categories. Add your favourites and order online or send the order on WhatsApp.</p></div>
+  <div class="filters">
+    <div class="search"><input id="q" type="search" placeholder="Search dishes…"></div>
+    <div class="chips" id="chips"></div>
+  </div>
+  <div class="grid menu" id="list"></div>
 </div></section>
-<section class="alt" id="qr"><div class="wrap qr">
-<div id="qrbox"></div>
-<div class="t"><p class="eyebrow" style="color:var(--accent)">Contactless Ordering</p><h2>Scan for the digital menu</h2>
-<p>Place this QR code on your tables. Guests scan it, browse the menu and send their order with the table number already filled in.</p>
-<div class="row"><input id="qt" type="number" min="1" placeholder="Table no. (optional)"><button class="btn" id="dl">Download QR</button></div></div>
+
+<!-- QR + STEPS -->
+<section class="alt" id="qr"><div class="wrap">
+  <div class="qrcard">
+    <div id="qrbox"></div>
+    <div class="t">
+      <p class="eyebrow">Contactless Ordering</p>
+      <h2>Scan for the digital menu</h2>
+      <p>Place this QR code on your tables. Guests scan it, browse the menu and send their order with the table number already filled in.</p>
+      <div class="row"><input id="qt" type="number" min="1" placeholder="Table no. (optional)"><button class="btn" id="dl">Download QR</button></div>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step"><b>01</b><h3>Scan</h3><p>Scan the QR code on your table or open our site.</p></div>
+    <div class="step"><b>02</b><h3>Choose</h3><p>Pick your dishes and add them to your order.</p></div>
+    <div class="step"><b>03</b><h3>Enjoy</h3><p>Pay your way and relax while we prepare it fresh.</p></div>
+  </div>
 </div></section>
+
+<!-- CONTACT -->
 <section id="contact"><div class="wrap">
-<div class="head"><p class="eyebrow">Get In Touch</p><h2>Contact Us</h2><p>Questions, reservations or catering requests? We reply quickly.</p></div>
-<div class="contact">
-<div>
-<div class="ci"><div class="ico"><i data-i="pin"></i></div><div><h3>Address</h3><p>12 Main Boulevard, Food Street</p></div></div>
-<div class="ci"><div class="ico"><i data-i="phone"></i></div><div><h3>Phone &amp; WhatsApp</h3><a id="tel" href="#"></a></div></div>
-<div class="ci"><div class="ico"><i data-i="mail"></i></div><div><h3>Email</h3><a id="em" href="#"></a></div></div>
-<div class="ci"><div class="ico"><i data-i="clock"></i></div><div><h3>Opening Hours</h3><p>Every day, 12:00 pm to 12:00 am</p></div></div>
-</div>
-<form class="cform" id="cf"><h3>Send us a message</h3>
-<input id="cn" placeholder="Your name" required><input id="cp" type="tel" placeholder="Phone number">
-<textarea id="cm" rows="4" placeholder="How can we help?" required></textarea>
-<button class="btn" type="submit" style="justify-content:center">Send via WhatsApp</button></form>
-</div></div></section>
+  <div class="head"><p class="eyebrow">Get In Touch</p><h2>Contact Us</h2><p>Questions, reservations or catering requests? We reply quickly.</p></div>
+  <div class="contact">
+    <div>
+      <div class="ci"><div class="ico"><i data-i="pin"></i></div><div><h3>Address</h3><p>12 Main Boulevard, Food Street</p></div></div>
+      <div class="ci"><div class="ico"><i data-i="phone"></i></div><div><h3>Phone &amp; WhatsApp</h3><a id="tel" href="#"></a></div></div>
+      <div class="ci"><div class="ico"><i data-i="mail"></i></div><div><h3>Email</h3><a id="em" href="#"></a></div></div>
+      <div class="ci"><div class="ico"><i data-i="clock"></i></div><div><h3>Opening Hours</h3><p>Every day, 12:00 pm to 12:00 am</p></div></div>
+    </div>
+    <form class="cform" id="cf"><h3>Send us a message</h3>
+      <input id="cn" placeholder="Your name" required>
+      <input id="cp" type="tel" placeholder="Phone number">
+      <textarea id="cm" rows="4" placeholder="How can we help?" required></textarea>
+      <button class="btn" type="submit">Send via WhatsApp</button>
+    </form>
+  </div>
+</div></section>
 </main>
+
 <footer><div class="wrap">
-<div class="fg">
-<div><h4>Saffron &amp; Smoke</h4><p>Fresh, flavourful food with delivery, QR ordering and prices that make sense.</p></div>
-<div><h4>Explore</h4><a href="#about">About</a><a href="#services">Services</a><a href="#menu">Menu</a><a href="#qr">QR Menu</a></div>
-<div><h4>Visit</h4><a href="#contact">Contact</a><a href="#contact">Opening hours</a><a href="#contact">Address</a></div>
-</div>
-<p class="copy" style="max-width:none">© 2026 Saffron &amp; Smoke. All rights reserved.</p>
+  <div class="fg">
+    <div><h4>Saffron &amp; Smoke</h4><p>Fresh, flavourful food with delivery, QR ordering and prices that make sense.</p></div>
+    <div><h4>Explore</h4><a href="#about">About</a><a href="#services">Services</a><a href="#menu">Menu</a><a href="#qr">QR Menu</a></div>
+    <div><h4>Visit</h4><a href="#contact">Contact</a><a href="#contact">Opening hours</a><a href="#contact">Address</a></div>
+  </div>
+  <div class="mega" aria-hidden="true">Saffron &amp; Smoke</div>
+  <p class="copy">© 2026 Saffron &amp; Smoke. All rights reserved.</p>
 </div></footer>
+
+<button class="fab" id="fab" hidden><i data-i="cart"></i><span id="fabt"></span></button>
+
 <div id="ov"></div>
 <aside id="drawer" aria-label="Your order">
-<div class="dh"><h3>Your Order</h3><button class="ib" id="close" aria-label="Close"><i data-i="x"></i></button></div>
-<div class="db" id="dbody"><div id="clist"></div>
-<div class="form">
-<select id="type" aria-label="Order type"><option>Dine-in</option><option>Home Delivery</option><option>Takeaway</option></select>
-<input id="table" type="number" min="1" placeholder="Table number">
-<input id="name" placeholder="Your name" autocomplete="name">
-<input id="phone" type="tel" placeholder="Mobile number (0300-1234567)" autocomplete="tel">
-<textarea id="addr" rows="2" placeholder="Delivery address"></textarea>
-<textarea id="note" rows="2" placeholder="Special instructions (optional)"></textarea>
-<h4>Payment method</h4>
-<select id="pay" aria-label="Payment method"></select>
-<div class="wallet" id="wallet" hidden><img id="wq" alt="Payment QR code" onerror="this.style.display='none'"><div><p>Send <b id="wamt"></b> to <b id="wn"></b>, then enter the transaction ID.</p><input id="trx" placeholder="Transaction ID"></div></div>
-</div></div>
-<div class="df" id="dfoot">
-<div class="sum"><span>Subtotal</span><span id="sub"></span></div>
-<div class="sum"><span>Delivery</span><span id="dlv"></span></div>
-<div class="sum" id="codrow" hidden><span>Cash on delivery fee</span><span id="codf"></span></div>
-<div class="sum t"><span>Total</span><span id="total"></span></div>
-<div class="acts"><button class="btn" id="now">Order Now</button><button class="wa" id="send">Send Order on WhatsApp</button></div></div>
-<div class="done" id="done" hidden></div>
+  <div class="dh"><h3>Your Order</h3><button class="ib" id="close" aria-label="Close"><i data-i="x"></i></button></div>
+  <div class="db" id="dbody"><div id="clist"></div>
+    <div class="form">
+      <select id="type" aria-label="Order type"><option>Dine-in</option><option>Home Delivery</option><option>Takeaway</option></select>
+      <input id="table" type="number" min="1" placeholder="Table number">
+      <input id="name" placeholder="Your name" autocomplete="name">
+      <input id="phone" type="tel" placeholder="Mobile number (0300-1234567)" autocomplete="tel">
+      <textarea id="addr" rows="2" placeholder="Delivery address"></textarea>
+      <textarea id="note" rows="2" placeholder="Special instructions (optional)"></textarea>
+      <h4>Payment method</h4>
+      <select id="pay" aria-label="Payment method"></select>
+      <div class="wallet" id="wallet" hidden><img id="wq" alt="Payment QR code" onerror="this.style.display='none'"><div><p>Send <b id="wamt"></b> to <b id="wn"></b>, then enter the transaction ID.</p><input id="trx" placeholder="Transaction ID"></div></div>
+    </div>
+  </div>
+  <div class="df" id="dfoot">
+    <div class="sum"><span>Subtotal</span><span id="sub"></span></div>
+    <div class="sum"><span>Delivery</span><span id="dlv"></span></div>
+    <div class="sum" id="codrow" hidden><span>Cash on delivery fee</span><span id="codf"></span></div>
+    <div class="sum t"><span>Total</span><span id="total"></span></div>
+    <div class="acts"><button class="btn" id="now">Order Now</button><button class="wa" id="send">Send Order on WhatsApp</button></div>
+  </div>
+  <div class="done" id="done" hidden></div>
 </aside>
 <div class="toast" id="toast" role="status"></div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="js/firebase-config.js"></script>
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
+<script src="js/effects.js"></script>
 </body>
 </html>
