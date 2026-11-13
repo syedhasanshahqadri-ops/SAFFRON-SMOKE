@@ -11,13 +11,19 @@ document.querySelectorAll("i[data-i]").forEach(e=>e.innerHTML=svg(e.dataset.i));
 
 /* theme */
 const root=document.documentElement;
-function theme(t){root.dataset.theme=t;$("#theme").innerHTML=svg(t==="dark"?"sun":"moon");store.set("theme",t)}
+function theme(t){root.dataset.theme=t;$("#theme").innerHTML=svg(t==="dark"?"sun":"moon");$("#theme").setAttribute("aria-label",t==="dark"?"Switch to light mode":"Switch to dark mode");store.set("theme",t)}
 theme(store.get("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));
 $("#theme").onclick=()=>theme(root.dataset.theme==="dark"?"light":"dark");
 
 /* nav */
-$("#burger").onclick=()=>{const o=$("#nav").classList.toggle("open");$("#burger").innerHTML=svg(o?"x":"menu")};
-$$("nav a").forEach(a=>a.onclick=()=>{$("#nav").classList.remove("open");$("#burger").innerHTML=svg("menu")});
+const lockUI=()=>document.body.classList.toggle("lock",$("#nav").classList.contains("open")||$("#drawer").classList.contains("on"));
+function setNav(o){$("#nav").classList.toggle("open",o);$("#burger").innerHTML=svg(o?"x":"menu");$("#burger").setAttribute("aria-expanded",o);$("#burger").setAttribute("aria-label",o?"Close menu":"Open menu");lockUI()}
+$("#burger").setAttribute("aria-controls","nav");setNav(false);
+$("#burger").onclick=()=>setNav(!$("#nav").classList.contains("open"));
+$$("nav a").forEach(a=>a.onclick=()=>setNav(false));
+document.addEventListener("click",e=>{if(!e.target.closest("header"))setNav(false)});
+addEventListener("keydown",e=>{if(e.key==="Escape"){setNav(false);drawer(false)}});
+matchMedia("(min-width:1061px)").addEventListener("change",e=>{if(e.matches)setNav(false)});
 const secs=$$("main section"),links=$$("nav a");
 function spy(){let cur=secs[0].id;const y=scrollY+130;secs.forEach(s=>{if(s.offsetTop<=y)cur=s.id});
  if(innerHeight+scrollY>=document.body.scrollHeight-4)cur=secs[secs.length-1].id;
@@ -54,7 +60,7 @@ $("#clist").onclick=e=>{const b=e.target.closest("button");if(!b)return;const{m,
 
 /* drawer */
 function reset(){$("#dbody").hidden=$("#dfoot").hidden=false;$("#done").hidden=true}
-const drawer=v=>{if(v)reset();$("#drawer").classList.toggle("on",v);$("#ov").classList.toggle("on",v)};
+function drawer(v){if(v){reset();setNav(false)}$("#drawer").classList.toggle("on",v);$("#ov").classList.toggle("on",v);lockUI()}
 $("#open").onclick=()=>drawer(true);$("#close").onclick=$("#ov").onclick=()=>drawer(false);
 function wallet(){const p=$("#pay").value,w=p==="easypaisa"||p==="jazzcash";$("#wallet").hidden=!w;
  if(w){const q=$("#wq");q.style.display="";q.src="images/payment/"+p+"-qr.png";$("#wn").textContent=CFG[p]}}
